@@ -2,6 +2,9 @@ package com.wipro.mbcms.dtos;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PatientDTO {
 
 	private long patientId;

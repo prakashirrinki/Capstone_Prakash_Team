@@ -1,41 +1,49 @@
 package com.wipro.mbcms.entities;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
+@Component
 public class InsurancePlanEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long planIid;
 	private String planName;
 	private String coverage;
 	private Double premium;
-	private InsuranceCompanyEntity insuranceCompany;
+	
+	@ManyToOne
+    @JoinColumn(name = "insurance_company_id", nullable = false)
+	private InsuranceCompanyEntity insuranceCompanyName;
 
-	public InsurancePlanEntity(Long id, String planName, String coverage, Double premium,
-			InsuranceCompanyEntity insuranceCompany) {
+	public InsurancePlanEntity(Long planIid, String planName, String coverage, Double premium,
+			InsuranceCompanyEntity insuranceCompanyName) {
 		super();
-		this.id = id;
+		this.planIid = planIid;
 		this.planName = planName;
 		this.coverage = coverage;
 		this.premium = premium;
-		this.insuranceCompany = insuranceCompany;
+		this.insuranceCompanyName = insuranceCompanyName;
 	}
 
 	public InsurancePlanEntity() {
 		super();
 	}
 
-	public Long getId() {
-		return id;
+	public Long getPlanIid() {
+		return planIid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPlanIid(Long planIid) {
+		this.planIid = planIid;
 	}
 
 	public String getPlanName() {
@@ -62,18 +70,18 @@ public class InsurancePlanEntity {
 		this.premium = premium;
 	}
 
-	public InsuranceCompanyEntity getInsuranceCompany() {
-		return insuranceCompany;
+	public InsuranceCompanyEntity getInsuranceCompanyName() {
+		return insuranceCompanyName;
 	}
 
-	public void setInsuranceCompany(InsuranceCompanyEntity insuranceCompany) {
-		this.insuranceCompany = insuranceCompany;
+	public void setInsuranceCompanyName(InsuranceCompanyEntity insuranceCompanyName) {
+		this.insuranceCompanyName = insuranceCompanyName;
 	}
 
 	@Override
 	public String toString() {
-		return "InsurancePlanEntity [id=" + id + ", planName=" + planName + ", coverage=" + coverage + ", premium="
-				+ premium + ", insuranceCompany=" + insuranceCompany + "]";
+		return "InsurancePlanEntity [planIid=" + planIid + ", planName=" + planName + ", coverage=" + coverage
+				+ ", premium=" + premium + ", insuranceCompanyName=" + insuranceCompanyName + "]";
 	}
 
 }

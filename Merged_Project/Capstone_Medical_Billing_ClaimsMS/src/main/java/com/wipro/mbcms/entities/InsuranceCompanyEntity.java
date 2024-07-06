@@ -1,51 +1,60 @@
 package com.wipro.mbcms.entities;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
+@Component
 public class InsuranceCompanyEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String name;
-	private List<InsurancePlanEntity> plans;
-	public InsuranceCompanyEntity(Long id, String name, List<InsurancePlanEntity> plans) {
+	private Long insuranceCompanyId;
+	private String insuranceCompanyName;
+	
+	@ManyToOne
+	private InsurancePlanEntity insurancePlans;
+	
+	public InsuranceCompanyEntity(Long insuranceCompanyId, String insuranceCompanyName,
+			InsurancePlanEntity insurancePlans) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.plans = plans;
+		this.insuranceCompanyId = insuranceCompanyId;
+		this.insuranceCompanyName = insuranceCompanyName;
+		this.insurancePlans = insurancePlans;
 	}
 	public InsuranceCompanyEntity() {
 		super();
 	}
-	public Long getId() {
-		return id;
+	public Long getInsuranceCompanyId() {
+		return insuranceCompanyId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setInsuranceCompanyId(Long insuranceCompanyId) {
+		this.insuranceCompanyId = insuranceCompanyId;
 	}
-	public String getName() {
-		return name;
+	public String getInsuranceCompanyName() {
+		return insuranceCompanyName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setInsuranceCompanyName(String insuranceCompanyName) {
+		this.insuranceCompanyName = insuranceCompanyName;
 	}
-	public List<InsurancePlanEntity> getPlans() {
-		return plans;
+	public InsurancePlanEntity getInsurancePlans() {
+		return insurancePlans;
 	}
-	public void setPlans(List<InsurancePlanEntity> plans) {
-		this.plans = plans;
+	public void setInsurancePlans(InsurancePlanEntity insurancePlans) {
+		this.insurancePlans = insurancePlans;
 	}
 	@Override
 	public String toString() {
-		return "InsuranceCompanyEntity [id=" + id + ", name=" + name + ", plans=" + plans + "]";
+		return "InsuranceCompanyEntity [insuranceCompanyId=" + insuranceCompanyId + ", insuranceCompanyName="
+				+ insuranceCompanyName + ", insurancePlans=" + insurancePlans + "]";
 	}
+	
+	
 	
 	
 

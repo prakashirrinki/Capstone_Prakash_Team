@@ -3,8 +3,14 @@ package com.wipro.mbcms.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.wipro.mbcms.entities.PatientEntity;
 
+import jakarta.transaction.Transactional;
+
+@Transactional
+@Service
 public class PatientServiceImplementation implements PatientService{
 
 	@Override

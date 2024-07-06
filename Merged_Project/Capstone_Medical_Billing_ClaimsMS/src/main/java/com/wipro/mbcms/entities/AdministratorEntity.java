@@ -1,24 +1,27 @@
 package com.wipro.mbcms.entities;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Component
 public class AdministratorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long adminId;
-	private String username;
-	private String password;
+	private String adminUserName;
+	private String adminPassword;
 
 	public AdministratorEntity(Long adminId, String username, String password) {
 		super();
 		this.adminId = adminId;
-		this.username = username;
-		this.password = password;
+		this.adminUserName = username;
+		this.adminPassword = password;
 	}
 
 	public AdministratorEntity() {
@@ -33,25 +36,25 @@ public class AdministratorEntity {
 		this.adminId = adminId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getAdminUserName() {
+		return adminUserName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAdminUserName(String userName) {
+		this.adminUserName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getAdminPassword() {
+		return adminPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdminPassword(String password) {
+		this.adminPassword = password;
 	}
 
 	@Override
 	public String toString() {
-		return "AdministratorEntity [adminId=" + adminId + ", username=" + username + ", password=" + password + "]";
+		return "AdministratorEntity [adminId=" + adminId + ", adminUserName=" + adminUserName + ", AdminPassword=" + adminPassword + "]";
 	}
 
 }

@@ -3,50 +3,40 @@ package com.wipro.mbcms.dtos;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AdministratorDTO {
+public class UserDTO {
 
-	private long adminId;
+	private Long userId;
 	private String username;
 	private String password;
-
-	public AdministratorDTO(long adminId, String username, String password) {
+	public UserDTO(Long userId, String username, String password) {
 		super();
-		this.adminId = adminId;
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 	}
-
-	public AdministratorDTO() {
+	public UserDTO() {
 		super();
 	}
-
-	public long getAdminId() {
-		return adminId;
+	public Long getUserId() {
+		return userId;
 	}
-
-	public void setAdminId(long adminId) {
-		this.adminId = adminId;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
-
 	public String getUsername() {
 		return username;
 	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	@Override
 	public String toString() {
-		return "AdministratorDTO [adminId=" + adminId + ", username=" + username + ", password=" + password + "]";
+		return "UserEntity [userId=" + userId + ", username=" + username + ", password=" + password + "]";
 	}
-
 }

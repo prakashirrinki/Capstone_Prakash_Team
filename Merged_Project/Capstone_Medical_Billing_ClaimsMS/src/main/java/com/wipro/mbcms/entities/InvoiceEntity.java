@@ -1,6 +1,10 @@
 package com.wipro.mbcms.entities;
 
-import java.util.Date;
+import java.math.BigDecimal;
+
+import java.time.LocalDate;
+
+import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,150 +12,150 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Component
 public class InvoiceEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long invoiceId;
-	private String invoiceNumber;
-	private Date dueDate;
-	private double consultationFee;
-	private double diagnosticTestFee;
-	private double diagnosticScanFee;
-	private double medicationBillAmount;
-	private double tax;
-	private double totleDueAmount;
-	private String status;
+	private Long invoiceId;
+	private LocalDate invoiceDate;
+	private LocalDate dueDate;
+	private String patientId;
+	private String patientName;
+	private String patientAddress;
+	private BigDecimal consultationFee;
+	private BigDecimal diagnosticTestsFee;
+	private BigDecimal diagnosticScanFee;
+	private BigDecimal prescribedMedicationsAmount;
+	private double taxRate;
+	private BigDecimal totalDueAmount;
 
-	private PatientEntity patientEntity;
-	private HealthCareProviderEntity healthCareProviderEntity;
-
-	public InvoiceEntity(long invoiceId, String invoiceNumber, Date dueDate, double consultationFee,
-			double diagnosticTestFee, double diagnosticScanFee, double medicationBillAmount, double tax,
-			double totleDueAmount, String status, PatientEntity patientEntity,
-			HealthCareProviderEntity healthCareProviderEntity) {
+	public InvoiceEntity(Long invoiceId, LocalDate invoiceDate, LocalDate dueDate, String patientId, String patientName,
+			String patientAddress, BigDecimal consultationFee, BigDecimal diagnosticTestsFee,
+			BigDecimal diagnosticScanFee, BigDecimal prescribedMedicationsAmount, double taxRate,
+			BigDecimal totalDueAmount) {
 		super();
 		this.invoiceId = invoiceId;
-		this.invoiceNumber = invoiceNumber;
+		this.invoiceDate = invoiceDate;
 		this.dueDate = dueDate;
+		this.patientId = patientId;
+		this.patientName = patientName;
+		this.patientAddress = patientAddress;
 		this.consultationFee = consultationFee;
-		this.diagnosticTestFee = diagnosticTestFee;
+		this.diagnosticTestsFee = diagnosticTestsFee;
 		this.diagnosticScanFee = diagnosticScanFee;
-		this.medicationBillAmount = medicationBillAmount;
-		this.tax = tax;
-		this.totleDueAmount = totleDueAmount;
-		this.status = status;
-		this.patientEntity = patientEntity;
-		this.healthCareProviderEntity = healthCareProviderEntity;
+		this.prescribedMedicationsAmount = prescribedMedicationsAmount;
+		this.taxRate = taxRate;
+		this.totalDueAmount = totalDueAmount;
 	}
 
 	public InvoiceEntity() {
 		super();
 	}
 
-	public long getInvoiceId() {
+	public Long getInvoiceId() {
 		return invoiceId;
 	}
 
-	public void setInvoiceId(long invoiceId) {
+	public void setInvoiceId(Long invoiceId) {
 		this.invoiceId = invoiceId;
 	}
 
-	public String getInvoiceNumber() {
-		return invoiceNumber;
+	public LocalDate getInvoiceDate() {
+		return invoiceDate;
 	}
 
-	public void setInvoiceNumber(String invoiceNumber) {
-		this.invoiceNumber = invoiceNumber;
+	public void setInvoiceDate(LocalDate invoiceDate) {
+		this.invoiceDate = invoiceDate;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 
-	public double getConsultationFee() {
+	public String getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+
+	public String getPatientAddress() {
+		return patientAddress;
+	}
+
+	public void setPatientAddress(String patientAddress) {
+		this.patientAddress = patientAddress;
+	}
+
+	public BigDecimal getConsultationFee() {
 		return consultationFee;
 	}
 
-	public void setConsultationFee(double consultationFee) {
+	public void setConsultationFee(BigDecimal consultationFee) {
 		this.consultationFee = consultationFee;
 	}
 
-	public double getDiagnosticTestFee() {
-		return diagnosticTestFee;
+	public BigDecimal getDiagnosticTestsFee() {
+		return diagnosticTestsFee;
 	}
 
-	public void setDiagnosticTestFee(double diagnosticTestFee) {
-		this.diagnosticTestFee = diagnosticTestFee;
+	public void setDiagnosticTestsFee(BigDecimal diagnosticTestsFee) {
+		this.diagnosticTestsFee = diagnosticTestsFee;
 	}
 
-	public double getDiagnosticScanFee() {
+	public BigDecimal getDiagnosticScanFee() {
 		return diagnosticScanFee;
 	}
 
-	public void setDiagnosticScanFee(double diagnosticScanFee) {
+	public void setDiagnosticScanFee(BigDecimal diagnosticScanFee) {
 		this.diagnosticScanFee = diagnosticScanFee;
 	}
 
-	public double getMedicationBillAmount() {
-		return medicationBillAmount;
+	public BigDecimal getPrescribedMedicationsAmount() {
+		return prescribedMedicationsAmount;
 	}
 
-	public void setMedicationBillAmount(double medicationBillAmount) {
-		this.medicationBillAmount = medicationBillAmount;
+	public void setPrescribedMedicationsAmount(BigDecimal prescribedMedicationsAmount) {
+		this.prescribedMedicationsAmount = prescribedMedicationsAmount;
 	}
 
-	public double getTax() {
-		return tax;
+	public double getTaxRate() {
+		return taxRate;
 	}
 
-	public void setTax(double tax) {
-		this.tax = tax;
+	public void setTaxRate(double taxRate) {
+		this.taxRate = taxRate;
 	}
 
-	public double getTotleDueAmount() {
-		return totleDueAmount;
+	public BigDecimal getTotalDueAmount() {
+		return totalDueAmount;
 	}
 
-	public void setTotleDueAmount(double totleDueAmount) {
-		this.totleDueAmount = totleDueAmount;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public PatientEntity getPatientEntity() {
-		return patientEntity;
-	}
-
-	public void setPatientEntity(PatientEntity patientEntity) {
-		this.patientEntity = patientEntity;
-	}
-
-	public HealthCareProviderEntity getHealthCareProviderEntity() {
-		return healthCareProviderEntity;
-	}
-
-	public void setHealthCareProviderEntity(HealthCareProviderEntity healthCareProviderEntity) {
-		this.healthCareProviderEntity = healthCareProviderEntity;
+	public void setTotalDueAmount(BigDecimal totalDueAmount) {
+		this.totalDueAmount = totalDueAmount;
 	}
 
 	@Override
 	public String toString() {
-		return "InvoiceEntity [invoiceId=" + invoiceId + ", invoiceNumber=" + invoiceNumber + ", dueDate=" + dueDate
-				+ ", consultationFee=" + consultationFee + ", diagnosticTestFee=" + diagnosticTestFee
-				+ ", diagnosticScanFee=" + diagnosticScanFee + ", medicationBillAmount=" + medicationBillAmount
-				+ ", tax=" + tax + ", totleDueAmount=" + totleDueAmount + ", status=" + status + ", patientEntity="
-				+ patientEntity + ", healthCareProviderEntity=" + healthCareProviderEntity + "]";
+		return "InvoiceEntity [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", dueDate=" + dueDate
+				+ ", patientId=" + patientId + ", patientName=" + patientName + ", patientAddress=" + patientAddress
+				+ ", consultationFee=" + consultationFee + ", diagnosticTestsFee=" + diagnosticTestsFee
+				+ ", diagnosticScanFee=" + diagnosticScanFee + ", prescribedMedicationsAmount="
+				+ prescribedMedicationsAmount + ", taxRate=" + taxRate + ", totalDueAmount=" + totalDueAmount + "]";
 	}
 
 }

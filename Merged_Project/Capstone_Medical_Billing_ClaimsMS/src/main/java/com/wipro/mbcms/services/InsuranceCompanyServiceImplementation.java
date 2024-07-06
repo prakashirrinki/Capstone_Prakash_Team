@@ -2,8 +2,14 @@ package com.wipro.mbcms.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.wipro.mbcms.entities.InsuranceCompanyEntity;
 
+import jakarta.transaction.Transactional;
+
+@Transactional
+@Service
 public class InsuranceCompanyServiceImplementation implements InsuranceCompanyService{
 
 	@Override

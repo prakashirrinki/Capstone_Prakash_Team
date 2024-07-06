@@ -1,7 +1,10 @@
 package com.wipro.mbcms.dtos;
 
+import org.springframework.stereotype.Component;
+
 import com.wipro.mbcms.entities.InsuranceCompanyEntity;
 
+@Component
 public class InsurencePlanDTO {
 
 	private Long id;

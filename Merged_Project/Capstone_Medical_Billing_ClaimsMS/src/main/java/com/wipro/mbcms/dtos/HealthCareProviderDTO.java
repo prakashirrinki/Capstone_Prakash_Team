@@ -1,5 +1,8 @@
 package com.wipro.mbcms.dtos;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class HealthCareProviderDTO {
 
 	private long healthCareProviderId;
