@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Generation</title>
+</head>
+<body>
+
+<div class="container invoice-container">
+  <h2>Generate Invoice</h2>
+  
+  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" class="invoice-form">
+    <div class="form-group">
+      <label for="patientId">Patient ID</label>
+      <input id="patientId" type="text" class="form-control" formControlName="patientId" placeholder="Enter patient ID">
+    </div>
+    <div class="form-group">
+      <label for="patientName">Patient Name</label>
+      <input id="patientName" type="text" class="form-control" formControlName="patientName" placeholder="Enter patient name">
+    </div>
+    <div class="form-group">
+      <label for="consultationFee">Consultation Fee</label>
+      <input id="consultationFee" type="number" class="form-control" formControlName="consultationFee" placeholder="Enter consultation fee">
+    </div>
+    <div class="form-group">
+      <label for="diagnosticTestsFee">Diagnostic Tests Fee</label>
+      <input id="diagnosticTestsFee" type="number" class="form-control" formControlName="diagnosticTestsFee" placeholder="Enter diagnostic tests fee">
+    </div>
+    <div class="form-group">
+      <label for="diagnosticScanFee">Diagnostic Scan Fee</label>
+      <input id="diagnosticScanFee" type="number" class="form-control" formControlName="diagnosticScanFee" placeholder="Enter diagnostic scan fee">
+    </div>
+    <div class="form-group">
+      <label for="medicationsBillAmount">Medications Bill Amount</label>
+      <input id="medicationsBillAmount" type="number" class="form-control" formControlName="medicationsBillAmount" placeholder="Enter medications bill amount">
+    </div>
+    <button type="submit" [disabled]="!invoiceForm.valid" class="btn btn-primary">Generate Invoice</button>
+  </form>
+  
+  <div *ngIf="invoiceGenerated" class="invoice-summary mt-4">
+    <h3>Invoice Summary</h3>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Subtotal:</strong> ₹{{ subtotal | number:'1.2-2' }}</p>
+    <p class="card-text"><strong>Tax (18% GST):</strong> ₹{{ tax | number:'1.2-2' }}</p>
+    <p class="card-text"><strong>Total Due:</strong> ₹{{ total | number:'1.2-2' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

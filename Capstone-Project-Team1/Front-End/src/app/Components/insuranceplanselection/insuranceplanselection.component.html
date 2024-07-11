@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Insurance Plans</title>
+</head>
+<body>
+  <div class="container insurance-plan-selection">
+    <h2>Select Insurance Plan</h2>
+    
+    <div class="plan-list">
+      <div *ngFor="let plan of insurancePlans" class="plan-item card" (click)="selectPlan(plan)" [class.selected]="selectedPlan === plan">
+        <div class="card-body">
+          <h3 class="card-title">{{plan.name}}</h3>
+          <p class="card-text"><strong>Coverage:</strong> {{plan.coverage}}</p>
+          <p class="card-text"><strong>Monthly Premium:</strong> {{plan.monthlyPremium | currency}}</p>
+          <p class="card-text"><strong>Deductible:</strong> {{plan.deductible | currency}}</p>
+          <p class="card-text"><strong>Out-of-Pocket Maximum:</strong> {{plan.outOfPocketMax | currency}}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="selectedPlan" class="selected-plan">
+      <h3>Selected Plan: {{selectedPlan.name}}</h3>
+      <button class="btn btn-primary" (click)="confirmSelection()">Confirm Selection</button>
+    </div>
+  </div>
+</body>
+</html>

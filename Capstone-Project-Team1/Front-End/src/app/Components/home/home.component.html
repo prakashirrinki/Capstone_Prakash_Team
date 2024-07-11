@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MBCMS</title>
+</head>
+<body>
+  <div class="content-wrapper">
+    <marquee behavior="alternate" direction="right">
+      <header>
+        <h1>Medical Billing and Claims Management System</h1>
+      </header>
+    </marquee>
+    <nav>&nbsp;
+      <a href="home.component.html">Home</a>&nbsp;
+      <a routerLink="/login" routerLinkActive="active">Login</a>&nbsp;
+      <a routerLink="/registration" routerLinkActive="active">Register</a>&nbsp;
+      <a routerLink="/userprofile" routerLinkActive="active">User Profile</a>
+    </nav>
+  
+    <router-outlet></router-outlet>
+  </div>
+ 
+  <footer>
+    <p>&copy; @2024 Team Project</p>
+  </footer>
+</body>
+</html>

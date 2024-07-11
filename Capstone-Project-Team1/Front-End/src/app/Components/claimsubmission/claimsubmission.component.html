@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim Submission</title>
+</head>
+<body>
+  
+<div class="container claim-submission-container">
+  <h2>Submit a Claim</h2>
+  <form [formGroup]="claimForm" (ngSubmit)="onSubmit()" class="claim-form">
+    <div class="form-group">
+      <label for="patientName">Patient Name</label>
+      <input id="patientName" type="text" class="form-control" formControlName="patientName" placeholder="Enter patient name">
+      <div *ngIf="patientName?.invalid && (patientName?.dirty || patientName?.touched)" class="alert alert-danger">
+        <div *ngIf="patientName?.errors?.['required']">Patient name is required.</div>
+        <div *ngIf="patientName?.errors?.['minlength']">Patient name must be at least 2 characters long.</div>
+        <div *ngIf="patientName?.errors?.['maxlength']">Patient name cannot exceed 50 characters.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dateOfService">Date of Service</label>
+      <input id="dateOfService" type="date" class="form-control" formControlName="dateOfService">
+      <div *ngIf="dateOfService?.invalid && (dateOfService?.dirty || dateOfService?.touched)" class="alert alert-danger">
+        <div *ngIf="dateOfService?.errors?.['required']">Date of service is required.</div>
+        <div *ngIf="dateOfService?.errors?.['futureDate']">Date of service cannot be in the future.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="diagnosis">Diagnosis</label>
+      <input id="diagnosis" type="text" class="form-control" formControlName="diagnosis" placeholder="Enter diagnosis">
+      <div *ngIf="diagnosis?.invalid && (diagnosis?.dirty || diagnosis?.touched)" class="alert alert-danger">
+        <div *ngIf="diagnosis?.errors?.['required']">Diagnosis is required.</div>
+        <div *ngIf="diagnosis?.errors?.['minlength']">Diagnosis must be at least 5 characters long.</div>
+        <div *ngIf="diagnosis?.errors?.['maxlength']">Diagnosis cannot exceed 100 characters.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="treatment">Treatment</label>
+      <textarea id="treatment" class="form-control" formControlName="treatment" placeholder="Describe the treatment"></textarea>
+      <div *ngIf="treatment?.invalid && (treatment?.dirty || treatment?.touched)" class="alert alert-danger">
+        <div *ngIf="treatment?.errors?.['required']">Treatment description is required.</div>
+        <div *ngIf="treatment?.errors?.['minlength']">Treatment description must be at least 10 characters long.</div>
+        <div *ngIf="treatment?.errors?.['maxlength']">Treatment description cannot exceed 500 characters.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="claimAmount">Claim Amount</label>
+      <input id="claimAmount" type="number" class="form-control" formControlName="claimAmount" placeholder="Enter claim amount">
+      <div *ngIf="claimAmount?.invalid && (claimAmount?.dirty || claimAmount?.touched)" class="alert alert-danger">
+        <div *ngIf="claimAmount?.errors?.['required']">Claim amount is required.</div>
+        <div *ngIf="claimAmount?.errors?.['min']">Claim amount must be greater than or equal to 0.</div>
+        <div *ngIf="claimAmount?.errors?.['max']">Claim amount cannot exceed 1,000,000.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="attachments">Attachments (Max 5MB per file)</label>
+      <input id="attachments" type="file" class="form-control-file" multiple (change)="onFileSelected($event)">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!claimForm.valid">Submit Claim</button>
+  </form>
+</div>
+
+</body>
+</html>
